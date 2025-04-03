@@ -1,0 +1,10 @@
+text
+numpy==1.24.3
+pandas==1.5.3
+librosa==0.10.2.post1
+torch==2.0.0
+torchvision==0.15.0  # Optional, if needed for PyTorch-related tasks
+scikit-learn==1.2.2
+matplotlib==3.7.1
+datasketch==1.5.0
+pickle-mixin==1.0.2  # For pickle compatibility
