@@ -1,11 +1,11 @@
-BreathSense 🌬️
+# BreathSense 🌬️
                   
 Just a project to test the idea of having privacy guarantees within Respiratory Sounds Schema. Note the code is not complete yet! 
 
-🌟 Overview
+# 🌟 Overview
 BreathSense is an experimental project aimed at leveraging privacy-preserving techniques in respiratory sound analysis. It combines machine learning architectures with federated learning to ensure data privacy while extracting meaningful insights from respiratory sounds.
 
-✅ Core Implementation
+# ✅ Core Implementation
 Here are the key components of the project:
 
 🎙️ Respiratory Acoustic Feature Extraction Pipeline: Extracting meaningful features from respiratory sound data.
@@ -18,31 +18,37 @@ Here are the key components of the project:
 
 📂 ICBHI Dataset Handler: Efficient handling and preprocessing of the International Conference on Biomedical and Health Informatics dataset.
 
-🚀 Getting Started
+# 🚀 Getting Started
 Follow these steps to explore BreathSense:
 
 Clone the Repository:
 
-bash
+```sh
 git clone https://github.com/yourusername/BreathSense.git
 cd BreathSense
+```
+
 Install Dependencies:
 Ensure you have Python 3.x installed, then run:
-
-bash
+```sh
 pip install -r requirements.txt
+```
+
 Run the Feature Extraction Pipeline:
-
-bash
+```sh
 python feature_extraction.py
+```
+
 Train the Model:
-
-bash
+```sh
 python tmodel.py
-Federated Learning Simulation:
+```
 
-bash
+Federated Learning Simulation:
+```sh
 python federated_learning.py
+```
+
 📊 Dataset
 BreathSense utilizes the ICBHI 2017 dataset for respiratory sound classification tasks. Ensure you download and preprocess the dataset using the provided handler script.
 
