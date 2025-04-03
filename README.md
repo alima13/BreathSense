@@ -49,10 +49,12 @@ Federated Learning Simulation:
 python federated_learning.py
 ```
 
-📊 Dataset
+# 📊 Dataset
+
 BreathSense utilizes the ICBHI 2017 dataset for respiratory sound classification tasks. Ensure you download and preprocess the dataset using the provided handler script.
 
-🛠️ Technologies Used
+# 🛠️ Technologies Used
+
 Python 🐍
 
 TensorFlow 🔗
@@ -61,9 +63,9 @@ Federated Learning Frameworks 🤝
 
 Locality-Sensitive Hashing (LSH) 📌
 
-🤝 Contributing
+# 🤝 Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests to improve BreathSense.
 
-📜 License
+# 📜 License
 This project is licensed under the MIT License.
 
