@@ -48,7 +48,6 @@ class RespiratoryDataset(Dataset):
         return feature, label
 
 class RespiratoryAcousticModel(nn.Module):
-    """CNN-LSTM model for respiratory sound classification."""
     
     def __init__(self, input_dim=24, hidden_dim=64, num_classes=4):
         super(RespiratoryAcousticModel, self).__init__()
@@ -84,7 +83,6 @@ class RespiratoryAcousticModel(nn.Module):
         return out
 
 class LSHAggregator:
-    """LSH-based model aggregation for federated learning."""
     
     def __init__(self, num_perm=128, threshold=0.7):
         self.num_perm = num_perm
@@ -97,7 +95,6 @@ class LSHAggregator:
         return np.concatenate(param_vector)
 
     def _vector_to_model(self, vector: np.ndarray, model_template: nn.Module) -> nn.Module:
-        """Convert flat vector back to model parameters."""
         model = copy.deepcopy(model_template)
         pos = 0
         for param in model.parameters():
@@ -197,7 +194,6 @@ class FederatedLearning:
         }
 
     def add_client(self, features, labels):
-        """Add a client with its local dataset."""
         dataset = RespiratoryDataset(features, labels)
         train_size = int(0.8 * len(dataset))
         val_size = len(dataset) - train_size
@@ -212,7 +208,6 @@ class FederatedLearning:
         })
 
     def select_clients(self):
-        """Randomly select a fraction of clients for training."""
         num_selected = max(1, int(self.num_clients * self.client_fraction))
         selected_clients = np.random.choice(range(len(self.clients)), size=num_selected, replace=False)
         return selected_clients
@@ -305,7 +300,6 @@ class FederatedLearning:
         return avg_metrics
 
     def train(self, num_rounds=10):
-        """Train federated model for multiple rounds."""
         for round_idx in range(num_rounds):
             train_loss = self.train_round()
             val_metrics = self.evaluate_global_model()
@@ -318,22 +312,21 @@ if __name__ == "__main__":
     extractor = FeatureExtractor()
     features = []
     labels = []
-    # Assuming you have a list of audio files and corresponding labels
     for audio_file, label in zip(["file1.wav", "file2.wav"], [0, 1], [0, 1]):
         feature = extractor.extract_features(audio_file)
         if feature is not None:
             features.append(feature)
             labels.append(label)
 
-    # Initialize federated learning setup
+    # Initialize federated learning setup -- Playing with these paramethers to optimize the whole set
     num_clients = 2
     federated_learner = FederatedLearning(
         model_fn=RespiratoryAcousticModel,
         num_clients=num_clients,
         client_fraction=1.0,
         local_epochs=2,
-        learning_rate=0.001,
-        lsh_threshold=0.7
+        learning_rate=0.002,
+        lsh_threshold=0.8
     )
 
     # Add clients with their local data

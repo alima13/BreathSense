@@ -21,7 +21,6 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 from feature_extraction import FeatureExtractor
 
-# Constants
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 class RespiratoryDataset(Dataset):
@@ -38,7 +37,6 @@ class RespiratoryDataset(Dataset):
         return feature, label
 
 class RespiratoryAcousticModel(nn.Module):
-    """CNN-LSTM model for respiratory sound classification."""
     
     def __init__(self, input_dim=24, hidden_dim=64, num_classes=4):
         super(RespiratoryAcousticModel, self).__init__()
@@ -79,20 +77,18 @@ if __name__ == "__main__":
     extractor = FeatureExtractor()
     features = []
     labels = []
-    # Assuming you have a list of audio files and corresponding labels
     for audio_file, label in zip(["file1.wav", "file2.wav"], [0, 1]):
         feature = extractor.extract_features(audio_file)
         if feature is not None:
             features.append(feature)
             labels.append(label)
     
-    # Create dataset and dataloader
     dataset = RespiratoryDataset(features, labels)
     train_size = int(0.8 * len(dataset))
     val_size = len(dataset) - train_size
     train_dataset, val_dataset = torch.utils.data.random_split(dataset, [train_size, val_size])
-    train_loader = DataLoader(train_dataset, batch_size=32, shuffle=True)
-    val_loader = DataLoader(val_dataset, batch_size=64, shuffle=False)
+    train_loader = DataLoader(train_dataset, batch_size=16, shuffle=True)
+    val_loader = DataLoader(val_dataset, batch_size=32, shuffle=False)
     
     # Initialize model and optimizer
     model = RespiratoryAcousticModel().to(DEVICE)

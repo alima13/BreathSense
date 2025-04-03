@@ -37,7 +37,8 @@ HOP_LENGTH = 512  # samples
 N_MFCC = 20  # Number of MFCC features
 N_FFT = 1024  # FFT window size
 
-class FeatureExtractor:
+# This part is AI-Generated, don't panic :)
+class FeatureExtractor: 
     """Extract acoustic features from raw audio data."""
     
     def __init__(self, sr=SAMPLE_RATE, n_mfcc=N_MFCC,
@@ -90,6 +91,8 @@ class FeatureExtractor:
         std = np.std(features, axis=1, keepdims=True)
         std[std == 0] = 1.0
         return (features - mean) / std
+    
+# I added this but I'm not pretty sure if it's working  correctly, I mean some other methods shall be tested too. 
 
     def apply_privacy_filter(self, features: np.ndarray, epsilon: float = 0.5) -> np.ndarray:
         """Apply differential privacy by adding calibrated noise."""
@@ -98,6 +101,7 @@ class FeatureExtractor:
         noise = np.random.laplace(loc=0, scale=scale, size=features.shape)
         return features + noise
 
+# This example usage parts all around the codes are for testing, please do not touch them!  
 # Example usage
 if __name__ == "__main__":
     extractor = FeatureExtractor()
