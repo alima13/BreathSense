@@ -95,7 +95,6 @@ class FeatureExtractor:
 # I added this but I'm not pretty sure if it's working  correctly, I mean some other methods shall be tested too. 
 
     def apply_privacy_filter(self, features: np.ndarray, epsilon: float = 0.5) -> np.ndarray:
-        """Apply differential privacy by adding calibrated noise."""
         sensitivity = 1.0  # Assuming normalized features with max sensitivity of 1
         scale = sensitivity / epsilon
         noise = np.random.laplace(loc=0, scale=scale, size=features.shape)
