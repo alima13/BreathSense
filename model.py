@@ -71,7 +71,6 @@ class RespiratoryAcousticModel(nn.Module):
         
         return out
 
-# Example usage
 if __name__ == "__main__":
     # Load features and labels
     extractor = FeatureExtractor()
