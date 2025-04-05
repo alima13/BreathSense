@@ -24,7 +24,7 @@ Follow these steps to explore BreathSense:
 Clone the Repository:
 
 ```sh
-git clone https://github.com/yourusername/BreathSense.git
+git clone https://github.com/alima13/BreathSense.git
 cd BreathSense
 ```
 
